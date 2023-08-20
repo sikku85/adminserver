@@ -123,6 +123,7 @@ const ApplicationForm = () => {
           onChange={(e) =>
             setDepartment(e.target.value)
           }
+          required
         >
           <option value="Railway">Railway</option>
           <option value="Teacher">Teacher</option>
@@ -302,6 +303,7 @@ const ApplicationForm = () => {
           type="date"
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
+          required
         />
 
         <label className="form-label">last Date:</label>
@@ -309,6 +311,7 @@ const ApplicationForm = () => {
           type="date"
           value={lastDate}
           onChange={(e) => setLastDate(e.target.value)}
+          required
         />
 
         <label className="form-label">Apply URL:</label>
