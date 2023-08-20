@@ -85,7 +85,7 @@ const ApplicationForm = () => {
 
   return (
     <div className="form-container">
-      <h2>Application Form</h2>
+      <h2>Bibhu  Form</h2>
       <form onSubmit={handleSubmit}>
         {/* Create input fields for each form field */}
         <label className="form-label">Exam Name:</label>
