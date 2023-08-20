@@ -6,23 +6,23 @@ const ApplicationForm = () => {
   const [examBoard, setExamBoard] = useState("");
   const [department, setDepartment] = useState("");
   const [ageLimit, setAgeLimit] = useState({
-    female: 0,
-    general: 0,
-    stSc: 0,
-    obc: 0,
-    pwdUnReserved: 0,
-    pwdObc: 0,
-    exServiceMen: 0,
+    female: "",
+    general: "",
+    stSc: "",
+    obc: "",
+    pwdUnReserved: "",
+    pwdObc: "",
+    exServiceMen: "",
   });
   const [feeDetails, setFeeDetails] = useState({
-    female: 0,
-    general: 0,
-    obc: 0,
-    ews: 0,
-    stSc: 0,
-    pwdObc: 0,
-    correctionOne: 0,
-    correctionTwo: 0,
+    female: "",
+    general: "",
+    obc: "",
+    ews: "",
+    stSc: "",
+    pwdObc: "",
+    correctionOne: "",
+    correctionTwo: "",
     modeOfPayment: "online",
   });
   const [startDate, setStartDate] = useState("");
@@ -51,7 +51,7 @@ const ApplicationForm = () => {
       qualification,
       extraFields,
     };
-    document.write(JSON.stringify(formData));
+    // document.write(JSON.stringify(formData));
 
     try {
         const headers = new Headers();
@@ -66,9 +66,13 @@ const ApplicationForm = () => {
         });
     
         if (response.ok) {
-          const responseData = await response.json();
-          console.log("Response data:", responseData);
-        } else {
+          const responseData = await response.text(); // Await the promise to get the response text
+    console.log("Response data:", responseData);
+    document.write(`
+    <div style="color: green; display: flex; justify-content: center; align-items: center; height: 100vh;">
+      ${responseData}
+    </div>
+  `);        } else {
           console.error("Failed to make POST request:", response.statusText);
         }
       } catch (error) {
@@ -151,7 +155,7 @@ const ApplicationForm = () => {
 
 
 
-        <label className="form-label">Age Limit:</label>
+        <label className="form-label">Age Limit(female):</label>
         <input className="form-input "
           type="number"
           value={ageLimit.female}
@@ -304,6 +308,7 @@ const ApplicationForm = () => {
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
           required
+          
         />
 
         <label className="form-label">last Date:</label>
@@ -312,6 +317,7 @@ const ApplicationForm = () => {
           value={lastDate}
           onChange={(e) => setLastDate(e.target.value)}
           required
+          
         />
 
         <label className="form-label">Apply URL:</label>
