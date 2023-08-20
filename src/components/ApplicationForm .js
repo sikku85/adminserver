@@ -114,8 +114,8 @@ const ApplicationForm = () => {
             setExamBoard(e.target.value)
           }
         >
+           <option value="Central">Central</option>
           <option value="State">State</option>
-          <option value="Central">Central</option>
         </select>
 
         <br /><br />
@@ -367,8 +367,9 @@ const ApplicationForm = () => {
         {/* Repeat for other age limit categories */}
 
         {/* Repeat for other form fields */}
-
-        <button type="submit">Submit</button>
+          <br />
+          <br />
+        <button style={{fontSize:"25px",fontWeight:"bolder"}} type="submit">Submit</button>
       </form>
     </div>
   );
