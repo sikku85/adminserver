@@ -369,7 +369,7 @@ const ApplicationForm = () => {
         {/* Repeat for other form fields */}
           <br />
           <br />
-        <button style={{fontSize:"25px",fontWeight:"bolder"}} type="submit">Submit</button>
+        <button style={{fontSize:"25px",fontWeight:"bolder",background:"green" ,color:"white", borderRadius:"5px"}} type="submit">Submit</button>
       </form>
     </div>
   );
