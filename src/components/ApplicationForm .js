@@ -2,6 +2,53 @@ import React, { useState } from "react";
 import "./Css.css"
 
 const ApplicationForm = () => {
+  const centraldata=[
+    "Railway",
+    "Teacher",
+    "UPSC",
+    "Defence",
+    "SSC",
+    "Bank",
+    "JEE-Engineers",
+    "Others"
+];
+const statedata=[
+  "Select State",
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal",
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
+    "Dadra and Nagar Haveli and Daman and Diu",
+    "Lakshadweep",
+    "Delhi",
+    "Puducherry"
+];
   const [examName, setExamName] = useState("");
   const [examBoard, setExamBoard] = useState("");
   const [department, setDepartment] = useState("");
@@ -35,6 +82,13 @@ const ApplicationForm = () => {
   });
   const [qualification, setQualification] = useState("");
   const [extraFields, setExtraFields] = useState("");
+
+  const availableData = examBoard === "Central" ? centraldata : statedata;
+
+  
+
+ 
+// setCentralStateData(centraldata);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -93,7 +147,7 @@ const ApplicationForm = () => {
 
   return (
     <div className="form-container" id="foamid">
-      <h2>Bibhu  Form</h2>
+      <h2>Application  Form</h2>
       <form className="foam" onSubmit={handleSubmit}>
         {/* Create input fields for each form field */}
         <label className="form-label">Exam Name:</label>
@@ -122,11 +176,12 @@ const ApplicationForm = () => {
             setExamBoard(e.target.value)
           }
         >
+            <option value="State">State</option>
            <option value="Central">Central</option>
-          <option value="State">State</option>
         </select>
 
         <br /><br />
+
 
 <label className="form-label">Department:</label>
         <select
@@ -137,14 +192,11 @@ const ApplicationForm = () => {
           }
           required
         >
-          <option value="Railway">Railway</option>
-          <option value="Teacher">Teacher</option>
-          <option value="Defence">Defence</option>
-          <option value="SSC">SSC</option>
-          <option value="Bank">Bank</option>
-          <option value="JEE-Engineers">JEE-Engineers</option>
-          <option value="UPSC">UPSC</option>
-          <option value="Others">Others</option>
+          {availableData.map((central, index) => (
+              <option key={index} value={central}>
+                {central}
+              </option>
+            ))}
           
         </select>
 
@@ -377,7 +429,7 @@ const ApplicationForm = () => {
         {/* Repeat for other form fields */}
           <br />
           <br />
-        <button style={{fontSize:"25px",fontWeight:"bolder",background:"green" ,color:"white", borderRadius:"5px"}} type="submit">Submit</button>
+        <button style={{fontSize:"25px",fontWeight:"bolder",background:"green" ,color:"white", borderRadius:"5px",cursor:"pointer"}} type="submit">Submit</button>
       </form>
     </div>
   );

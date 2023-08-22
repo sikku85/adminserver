@@ -18,19 +18,20 @@ export const Navbar = () => {
     };
     return (
       <nav className="nav">
-        <a href="#" className="nav__brand">
-          ParikhaResult
-        </a>
+        <div class="logo-container">
+            <div class="logo first-letter">P</div>
+            <div class="logo-text">areeksha.com</div>
+          </div>
         <ul className={active}>
         
           <Link to="/">Home</Link>
-          <Link to="upload_ApplicationForm">Upload Application</Link>
-          <Link to="upload_Admitcard">Upload AdmitCard</Link>
-          <Link to="upload_Result">Upload Result</Link>
+          <Link to="upload_ApplicationForm">Application</Link>
+          <Link to="upload_Admitcard">AdmitCard</Link>
+          <Link to="upload_Result">Result</Link>
 
           <li className="nav__item">
             <a href="#" className="nav__link">
-              login
+              Login
             </a>
           </li>
         </ul>

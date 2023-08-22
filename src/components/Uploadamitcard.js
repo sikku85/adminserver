@@ -34,15 +34,17 @@ export const Uploadamitcard = () => {
           if (response.ok) {
             const responseData = await response.text(); // Await the promise to get the response text
       console.log("Response data:", responseData);
-      document.write(`
-      <div style="color: green; display: flex; justify-content: center; align-items: center; height: 100vh;">
-        ${responseData}
-      </div>
-    `);        } else {
+      document.getElementById("foamid").innerHTML=responseData;
+
+             } else {
             console.error("Failed to make POST request:", response.statusText);
+            document.getElementById("foamid").innerHTML=response.statusText;
+
           }
         } catch (error) {
           console.error("Error:", error);
+          document.getElementById("foamid").innerHTML=error;
+
         }
   
   
@@ -50,8 +52,8 @@ export const Uploadamitcard = () => {
   
   
     return (
-      <div className="form-container">
-        <h2>admit  Form</h2>
+      <div className="form-container" id="foamid">
+        <h2>AdmitCard Form</h2>
         <form onSubmit={handleSubmit}>
           {/* Create input fields for each form field */}
           <label className="form-label">Exam Name:</label>
@@ -89,7 +91,7 @@ export const Uploadamitcard = () => {
 
             <br />
             <br />
-          <button style={{fontSize:"25px",fontWeight:"bolder",background:"green" ,color:"white", borderRadius:"5px"}} type="submit">Submit</button>
+          <button style={{fontSize:"25px",fontWeight:"bolder",background:"green" ,color:"white", borderRadius:"5px",cursor:"pointer"}} type="submit">Submit</button>
         </form>
       </div>
     );
