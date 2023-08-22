@@ -34,6 +34,7 @@ a {
   align-items: center;
   justify-content: space-around;
   gap: 3rem;
+  padding: 10px;
 }
 .nav__toggler {
   display: none;
@@ -55,8 +56,8 @@ a {
     position: fixed;
     top: 7vh;
     right: 0;
-    height: 93vh;
-    width: 50vw;
+    height: 50vh;
+    width: 30vw;
     background: rgb(0, 33, 65);
     flex-direction: column;
     transform: translateX(100%);

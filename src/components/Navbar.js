@@ -23,13 +23,19 @@ export const Navbar = () => {
             <div class="logo-text">areeksha.com</div>
           </div>
         <ul className={active}>
-        
-          <Link to="/">Home</Link>
-          <Link to="upload_ApplicationForm">Application</Link>
-          <Link to="upload_Admitcard">AdmitCard</Link>
-          <Link to="upload_Result">Result</Link>
-
-          <li className="nav__item">
+         <li className='nav_item'>
+         <Link to="/">Home</Link>
+         </li>
+         <li className='nav_item'>
+         <Link to="upload_ApplicationForm">Application</Link>
+         </li>
+         <li className='nav_item'>
+         <Link to="upload_Admitcard">AdmitCard</Link>
+         </li>
+         <li className='nav_item'>
+         <Link to="upload_Result">Result</Link>
+         </li>
+          <li className="nav_item">
             <a href="#" className="nav__link">
               Login
             </a>
