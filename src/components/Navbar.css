@@ -33,6 +33,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,11,60,0.9136248249
 .nav__menu {
   display: flex;
   align-items: center;
+  /* heo */
   justify-content: space-around;
   gap: 3rem;
   padding: 10px;
