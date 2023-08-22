@@ -5,6 +5,7 @@ const ApplicationForm = () => {
   const [examName, setExamName] = useState("");
   const [examBoard, setExamBoard] = useState("");
   const [department, setDepartment] = useState("");
+  const [responsedata, setResponsedata] = useState("");
   const [ageLimit, setAgeLimit] = useState({
     female: "",
     general: "",
@@ -68,25 +69,32 @@ const ApplicationForm = () => {
         if (response.ok) {
           const responseData = await response.text(); // Await the promise to get the response text
     console.log("Response data:", responseData);
-    document.write(`
-    <div style="color: green; display: flex; justify-content: center; align-items: center; height: 100vh;">
-      ${responseData}
-    </div>
-  `);        } else {
+    // setResponsedata(responseData);
+    document.getElementById("foamid").innerHTML=responseData;
+
+   
+  } else {
           console.error("Failed to make POST request:", response.statusText);
+          setResponsedata(response.statusText)
+          document.getElementById("foamid").innerHTML= response.statusText;
+
         }
       } catch (error) {
         console.error("Error:", error);
+        document.getElementById("foamid").innerHTML= error;
+
       }
+  
+
 
 
   };
-
+  
 
   return (
-    <div className="form-container">
-      <h2>Application Form</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="form-container" id="foamid">
+      <h2>Bibhu  Form</h2>
+      <form className="foam" onSubmit={handleSubmit}>
         {/* Create input fields for each form field */}
         <label className="form-label">Exam Name:</label>
         <input className="form-input "
