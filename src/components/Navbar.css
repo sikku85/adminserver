@@ -21,8 +21,8 @@ a {
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  height: 8vh;
+  justify-content: space-between;
+  height: 12vh;
   background: rgb(0, 33, 65);
 }
 .nav__brand {
@@ -79,3 +79,18 @@ a {
 .toggle .line3 {
   transform: rotate(45deg) translate(-4px, -5px);
 }
+
+.first-letter {
+    font-size: 80px;
+    font-weight: 500;
+    color: Red;
+  }
+  .logo-container {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+  }
+  .logo-text {
+    font-size: 28px;
+    color: white;
+  }
