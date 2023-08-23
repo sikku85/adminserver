@@ -6,6 +6,7 @@ export const UploadResult = () => {
     const [examName, setExamName] = useState("");
     const [declaredDate, setDeclaredDate] = useState("");
     const [resultUrl, setResultUrl] = useState("");
+    const [status,setStatus]=useState("");
 
     const handleSubmit = async(e) => {
       e.preventDefault();
@@ -33,15 +34,36 @@ export const UploadResult = () => {
           if (response.ok) {
             const responseData = await response.text(); // Await the promise to get the response text
       console.log("Response data:", responseData);
-      document.getElementById("foamid").innerHTML=responseData;
+    //   document.getElementById("foamid").innerHTML=responseData;
+    setStatus("Data Uploaded Successfully");
+    setDeclaredDate("");
+    setResultUrl("");
+    setExamName("");
+    setTimeout(() => {
+        setStatus("")
+    }, 3000);
       ;        } else {
             console.error("Failed to make POST request:", response.statusText);
-            document.getElementById("foamid").innerHTML=response.statusText;
+            // document.getElementById("foamid").innerHTML=response.statusText;
+            setStatus("Data Upload Failed");
+            setDeclaredDate("");
+            setResultUrl("");
+             setExamName("");
+             setTimeout(() => {
+                setStatus("")
+            }, 3000);
 
           }
         } catch (error) {
           console.error("Error:", error);
-          document.getElementById("foamid").innerHTML=error;
+        //   document.getElementById("foamid").innerHTML=error;
+        setStatus("Data Upload Failed");
+        setDeclaredDate("");
+        setResultUrl("");
+        setExamName("");
+        setTimeout(() => {
+            setStatus("")
+        }, 3000);
 
         }
   
@@ -89,6 +111,7 @@ export const UploadResult = () => {
             <br />
             <br />
           <button style={{fontSize:"25px",fontWeight:"bolder",background:"green" ,color:"white", borderRadius:"5px",cursor:"pointer",background: "rgb(2,0,36)",padding:"4px"}} type="submit">Submit</button>
+          {status}
         </form>
       </div>
     );
