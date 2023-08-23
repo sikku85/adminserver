@@ -22,9 +22,12 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 12vh;
+  height: 10vh;
   background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,11,60,0.913624824929972) 100%, rgba(0,212,255,1) 100%);
+/* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,11,60,0.913624824929972) 100%, rgba(0,212,255,1) 100%); */
+}
+.nav_item{
+    font-family: 'Bree Serif', serif;
 }
 .nav__brand {
   text-transform: uppercase;
@@ -84,9 +87,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,11,60,0.9136248249
 }
 
 .first-letter {
-    font-size: 80px;
+    font-size: 50px;
     font-weight: 500;
-    color: Red;
+    color: brown;
   }
   .logo-container {
     display: flex;
@@ -96,4 +99,6 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,11,60,0.9136248249
   .logo-text {
     font-size: 28px;
     color: white;
+    font-family: 'Archivo Black', sans-serif;
+font-family: 'Tilt Prism', cursive;
   }
