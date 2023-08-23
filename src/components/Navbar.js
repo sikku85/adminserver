@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import "./Navbar.css"
+import "./Navbar.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+
 
 export const Navbar = () => {
     const [active, setActive] = useState("nav__menu");
@@ -24,7 +27,8 @@ export const Navbar = () => {
           </div>
         <ul className={active}>
          <li className='nav_item'>
-         <Link to="/">Home</Link>
+         
+         <Link to="/">Home <i class="fa-solid fa-house"></i></Link>
          </li>
          <li className='nav_item'>
          <Link to="upload_ApplicationForm">Application</Link>
@@ -46,6 +50,7 @@ export const Navbar = () => {
           <div className="line2"></div>
           <div className="line3"></div>
         </div>
+        
       </nav>
     );
   

@@ -7,7 +7,7 @@ export const Animation = () => {
     useEffect(() => {
         const typeData = new Typed('.role', {
           strings: [
-            'Welcome to Pareeksha.com',
+            'Welcome to Admin Page',
             'Thanks for your contribution',
             'You are valuable for us',
             'Keep it up! Good Job',
@@ -24,20 +24,25 @@ export const Animation = () => {
       }, []);
     
   return (
-   <div  className='color' style={{height:"100vh",display:"flex"}}>
+   <div  className='color manincontainer' >
 
-    <div style={{width:"50vw",height:"100vh",display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column"}} className='right'>
-   <div><h1 style={{color:"white"}}><span className="role"></span></h1> </div> 
+    <div style={{}} className='left'>
+   {/* <div><h1 style={{color:"white"}}><span className="role"></span></h1> </div>  */}
    <br />
-   <div style={{color:"white",padding:"10px"}}>
+   {/* <div style={{color:"white",padding:"10px"}}>
               "Your contributions make a significant impact, helping us create
               a better digital world. <br /> Thank you for your valuable
               work and dedication!"
-            </div>
+            </div> */}
+        <div className='leftpart'>
+            <div><h1><span className="role"></span></h1></div>     
+        </div>
+        <br />
+        <div className='subquotes'>Your are Important for Us!</div>
     </div>
 
 
-    <div  className='animated-text-container'  style={{ width: "50vw", height: "100vh",backgroundRepeat:"no-repeat"}}  >
+    <div  className='animated-text-container'  style={{ backgroundRepeat:"no-repeat"}}  >
 
     </div>
 
