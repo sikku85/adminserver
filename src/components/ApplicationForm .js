@@ -429,7 +429,7 @@ const statedata=[
         {/* Repeat for other form fields */}
           <br />
           <br />
-        <button style={{fontSize:"25px",fontWeight:"bolder",background:"green" ,color:"white", borderRadius:"5px",cursor:"pointer"}} type="submit">Submit</button>
+        <button style={{fontSize:"25px",fontWeight:"bolder",background:"green" ,color:"white", borderRadius:"5px",cursor:"pointer",background: "rgb(2,0,36)",padding:"4px"}} type="submit">Submit</button>
       </form>
     </div>
   );
