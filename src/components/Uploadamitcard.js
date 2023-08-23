@@ -9,6 +9,7 @@ export const Uploadamitcard = () => {
     const [examName, setExamName] = useState("");
     const [declaredDate, setDeclaredDate] = useState("");
     const [downloadUrl, setDownloadUrl] = useState("");
+    const [status,setStatus] =useState("");
     const {isLoggedIn,setIsLoggedIn}=useContext(AppContext);
 
 
@@ -38,16 +39,37 @@ export const Uploadamitcard = () => {
           if (response.ok) {
             const responseData = await response.text(); // Await the promise to get the response text
       console.log("Response data:", responseData);
-      document.getElementById("foamid").innerHTML=responseData;
+      setStatus("Data Uploaded Successfully");
+    setDeclaredDate("");
+    setDownloadUrl("");
+    setExamName("");
+    setTimeout(() => {
+        setStatus("")
+    }, 3000);
+    //   document.getElementById("foamid").innerHTML=responseData;
 
              } else {
             console.error("Failed to make POST request:", response.statusText);
-            document.getElementById("foamid").innerHTML=response.statusText;
+            setStatus("Data Upload Failed");
+    setDeclaredDate("");
+    setDownloadUrl("");
+    setExamName("");
+    setTimeout(() => {
+        setStatus("")
+    }, 3000);
+            // document.getElementById("foamid").innerHTML=response.statusText;
 
           }
         } catch (error) {
           console.error("Error:", error);
-          document.getElementById("foamid").innerHTML=error;
+          setStatus("Data Upload Failed");
+    setDeclaredDate("");
+    setDownloadUrl("");
+    setExamName("");
+    setTimeout(() => {
+        setStatus("")
+    }, 3000);
+        //   document.getElementById("foamid").innerHTML=error;
 
         }
   
@@ -97,6 +119,7 @@ export const Uploadamitcard = () => {
             <br />
           <button style={{fontSize:"25px",fontWeight:"bolder",background: "rgb(2,0,36)"
               ,color:"white", borderRadius:"5px",cursor:"pointer",padding:"4px"}} type="submit">Submit</button>
+              {status}
         </form>
       </div>
     );
