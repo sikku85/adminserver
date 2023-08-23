@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./Navbar.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { useContext } from 'react';
+import AppContext from './Context/AppContext';
 
 export const Navbar = () => {
     const [active, setActive] = useState("nav__menu");
     const [icon, setIcon] = useState("nav__toggler");
+    const {login,setIsLoggedIn}=useContext(AppContext);
     
     const navToggle = () => {
       if (active === "nav__menu") {
@@ -26,6 +29,9 @@ export const Navbar = () => {
       setActive("nav__menu"); // Close the menu
       setIcon("nav__toggler"); // Reset icon
     };
+    const handlelogin=()=>{
+        setIsLoggedIn(false);
+    }
     
     return (
       <nav className="nav">
@@ -46,10 +52,8 @@ export const Navbar = () => {
           <li className='nav_item'>
             <Link to="upload_Result" onClick={closeMenu}>Result</Link>
           </li>
-          <li className="nav_item">
-            <a href="#" className="nav__link">
-              Login
-            </a>
+          <li className="nav_item nav_item_login">
+          <Link  to="login" onClick={handlelogin}>{login}</Link>
           </li>
         </ul>
         <div onClick={navToggle} className={icon}>

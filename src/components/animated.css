@@ -188,6 +188,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,11,60,0.9136248249
   .role {
     color: #E2725B;
     font-weight: 800;
+    font-size:xx-large;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   .hero-section-description {

@@ -38,7 +38,7 @@ export const Animation = () => {
             <div><h1><span className="role"></span></h1></div>     
         </div>
         <br />
-        <div className='subquotes'>Your are Important for Us!</div>
+        <div className='subquotes'>You are Important for Us!</div>
     </div>
 
 

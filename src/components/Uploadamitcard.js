@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
+import { useContext } from 'react';
+import AppContext from './Context/AppContext';
 
 export const Uploadamitcard = () => {
 
@@ -7,6 +9,8 @@ export const Uploadamitcard = () => {
     const [examName, setExamName] = useState("");
     const [declaredDate, setDeclaredDate] = useState("");
     const [downloadUrl, setDownloadUrl] = useState("");
+    const {isLoggedIn,setIsLoggedIn}=useContext(AppContext);
+
 
     const handleSubmit = async(e) => {
       e.preventDefault();
@@ -91,7 +95,8 @@ export const Uploadamitcard = () => {
 
             <br />
             <br />
-          <button style={{fontSize:"25px",fontWeight:"bolder",background:"green" ,color:"white", borderRadius:"5px",cursor:"pointer"}} type="submit">Submit</button>
+          <button style={{fontSize:"25px",fontWeight:"bolder",background: "rgb(2,0,36)"
+              ,color:"white", borderRadius:"5px",cursor:"pointer",padding:"4px"}} type="submit">Submit</button>
         </form>
       </div>
     );
