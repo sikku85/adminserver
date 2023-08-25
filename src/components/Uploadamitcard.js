@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import { useContext } from 'react';
 import AppContext from './Context/AppContext';
+import { Spinner } from './Spinner';
+
 
 export const Uploadamitcard = () => {
 
@@ -10,11 +12,13 @@ export const Uploadamitcard = () => {
     const [declaredDate, setDeclaredDate] = useState("");
     const [downloadUrl, setDownloadUrl] = useState("");
     const [status,setStatus] =useState("");
+    const [loadings,setLoadings] = useState(false);
     const {isLoggedIn,setIsLoggedIn}=useContext(AppContext);
 
 
     const handleSubmit = async(e) => {
       e.preventDefault();
+      setLoadings(true);
   
       // Create the data object to send to the server
       const formData = {
@@ -72,14 +76,18 @@ export const Uploadamitcard = () => {
         //   document.getElementById("foamid").innerHTML=error;
 
         }
+        setLoadings(false);
   
   
     };
   
   
     return (
-      <div className="form-container" id="foamid">
+     <div>
+      {loadings?(<><Spinner></Spinner></>):(<>
+        <div className="form-container" id="foamid">
         <h2>AdmitCard Form</h2>
+        <div>{status}</div>
         <form onSubmit={handleSubmit}>
           {/* Create input fields for each form field */}
           <label className="form-label">Exam Name:</label>
@@ -122,5 +130,7 @@ export const Uploadamitcard = () => {
               {status}
         </form>
       </div>
+      </>)}
+     </div>
     );
 }

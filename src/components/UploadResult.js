@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { Spinner } from './Spinner';
 
 export const UploadResult = () => {
   
@@ -7,6 +8,7 @@ export const UploadResult = () => {
     const [declaredDate, setDeclaredDate] = useState("");
     const [resultUrl, setResultUrl] = useState("");
     const [status,setStatus]=useState("");
+    const [loadings,setLoadings] = useState(false);
 
     const handleSubmit = async(e) => {
       e.preventDefault();
@@ -72,8 +74,11 @@ export const UploadResult = () => {
   
   
     return (
-      <div className="form-container" id="foamid">
+    <div>
+      {loadings?(<><Spinner></Spinner></>):(<>
+        <div className="form-container" id="foamid">
         <h2>Result  Form</h2>
+        <div>{status}</div>
         <form onSubmit={handleSubmit}>
           {/* Create input fields for each form field */}
           <label className="form-label">Exam Name:</label>
@@ -114,5 +119,7 @@ export const UploadResult = () => {
           {status}
         </form>
       </div>
+      </>)}
+    </div>
     );
 }

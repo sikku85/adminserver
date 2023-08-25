@@ -15,6 +15,9 @@ function LoginForm() {
         },{
             email:"bibhu@gmail.com",
             password:"1234"
+        },{
+          email:"pagali@gmail.com",
+          password:"pagali",
         }
     ]
   const navigate = useNavigate()
