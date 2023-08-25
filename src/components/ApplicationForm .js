@@ -167,14 +167,15 @@ setTimeout(() => {
           const responseData = await response.text(); // Await the promise to get the response text
     console.log("Response data:", responseData);
     // setResponsedata(responseData);
-    setStatus("Upload data successfully");
+    setStatus(responseData);
     resetdata();
 
    
   } else {
           console.error("Failed to make POST request:", response.statusText);
+          const responseData = await response.text();
           setResponsedata(response.statusText)
-          setStatus(" Data upload failed");
+          setStatus(responseData);
           resetdata();
 
         }

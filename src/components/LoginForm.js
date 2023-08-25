@@ -4,34 +4,21 @@ import { Link, useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import AppContext from "./Context/AppContext"
 import "./loginfoam.css"
+import { Navbar } from "./Navbar"
 
 // import { login } from "../../../services/operations/authAPI"
 
 function LoginForm() {
-    const userinfo=[
-        {
-        email:"sikku@gmail.com",
-        password:"1234"
-        },{
-            email:"bibhu@gmail.com",
-            password:"1234"
-        },{
-          email:"pagali@gmail.com",
-          password:"pagali",
-        }
-    ]
+   
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    userName: "",
+    passWord: "",
   })
 
   const [showPassword, setShowPassword] = useState(false)
   const {isLoggedIn,setIsLoggedIn,setIsLoggedout,setLogin}=useContext(AppContext);
   const [status,setStatus]=useState("");
-
-  const { email, password } = formData
-
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -39,43 +26,60 @@ function LoginForm() {
     }))
   }
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async(e) => {
     e.preventDefault();
-    const userMatch = userinfo.find(user => user.email === email && user.password === password);
-
-if (userMatch) {
-  console.log("Login successful");
+    try{
+      const headers = new Headers();
+          headers.append('ngrok-skip-browser-warning', 'true');   
+          const response = await fetch("https://f0cd-2401-4900-1c37-67de-7095-c33c-14e-f927.ngrok-free.app/user/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+          if(response.status===202){
+            console.log("Login successful");
   setIsLoggedIn(true);
   setIsLoggedout(false);
   setLogin("Logout");
-  setFormData({email:"",password:""});
-} else {
-  console.log("Login failed");
-  setStatus("Login Failed");
-  setFormData({email:"",password:""});
-  setTimeout(() => {
-    setStatus("");
-  }, 2000);
+  setFormData({userName:"",passWord:""});
+          }else{
+            const responseData = await response.text();
+            console.log("Login failed");
+            setStatus(responseData);
+            setFormData({userName:"",passWord:""});
+            setTimeout(() => {
+              setStatus("");
+            }, 5000);
 
-//   setIsLoggedIn(false);
+          }
+
+    }
+    catch(error){
+      setStatus("Login Failed");
+      console.log(error)
+
+    }
+//  setIsLoggedIn(false);
 }
-    
-  }
-
+  
   return (
+    <>
+    <div className="foamcontainer">
     <form
       onSubmit={handleOnSubmit}
       className="mainfoamcontainer"
     >
       <label className="">
         <p className="">
-          Email Address <sup className="text-pink-200">*</sup>
+          Email Address <>*</>
         </p>
         <input
           required
           type="text"
-          name="email"
-          value={email}
+          name="userName"
+          value={formData.userName}
           onChange={handleOnChange}
           placeholder="Enter email address"
           style={{
@@ -83,26 +87,24 @@ if (userMatch) {
           }}
           className="inputfield"
         />
+        
       </label>
       <label className="relative">
         <p className="">
-          Password <sup className="text-pink-200">*</sup>
+          Password <sup className="">*</sup>
         </p>
         <input
           required
-          type={showPassword ? "text" : "password"}
-          name="password"
-          value={password}
+          type={showPassword ? 'text' : 'password'}
+          name="passWord"
+          value={formData.passWord}
           onChange={handleOnChange}
           placeholder="Enter Password"
-          style={{
-            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-          }}
           className="inputfield"
         />
         <span
           onClick={() => setShowPassword((prev) => !prev)}
-          className=""
+          className="password-icon"
         >
           {showPassword ? (
             <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
@@ -110,11 +112,7 @@ if (userMatch) {
             <AiOutlineEye fontSize={24} fill="#AFB2BF" />
           )}
         </span>
-        <Link to="">
-          <p className="">
-            Forgot Password
-          </p>
-        </Link>
+       
       </label>
       <button
         type="submit"
@@ -122,8 +120,17 @@ if (userMatch) {
       >
         Sign In
       </button>
+      <div className="signupbtn">
+        <button className="signup">Signup</button>
+        <button className="forget">Forget</button>
+      </div>
       {status}
     </form>
+
+    </div>
+     
+    </>
+   
   )
 }
 
