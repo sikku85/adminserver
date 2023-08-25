@@ -65,7 +65,7 @@ export const UploadResult = () => {
         setExamName("");
         setTimeout(() => {
             setStatus("")
-        }, 3000);
+        }, 3 .000);
 
         }
   
@@ -78,7 +78,6 @@ export const UploadResult = () => {
       {loadings?(<><Spinner></Spinner></>):(<>
         <div className="form-container" id="foamid">
         <h2>Result  Form</h2>
-        <div>{status}</div>
         <form onSubmit={handleSubmit}>
           {/* Create input fields for each form field */}
           <label className="form-label">Exam Name:</label>
