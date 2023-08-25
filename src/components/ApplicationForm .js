@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Spinner } from "./Spinner";
 import "./Css.css"
+
 
 const ApplicationForm = () => {
   const centraldata=[
@@ -53,6 +55,7 @@ const statedata=[
   const [examBoard, setExamBoard] = useState("");
   const [department, setDepartment] = useState("");
   const [responsedata, setResponsedata] = useState("");
+  const [loadings, setLoadings] = useState(false);
   const [ageLimit, setAgeLimit] = useState({
     female: "",
     general: "",
@@ -82,16 +85,56 @@ const statedata=[
   });
   const [qualification, setQualification] = useState("");
   const [extraFields, setExtraFields] = useState("");
+  const [status,setStatus]=useState("");
 
   const availableData = examBoard === "Central" ? centraldata : statedata;
 
   
 
  
-// setCentralStateData(centraldata);
+// setCentralStateData(centraldata);\
+function resetdata(){
+  setFeeDetails({
+    female: "",
+    general: "",
+    obc: "",
+    ews: "",
+    stSc: "",
+    pwdObc: "",
+    correctionOne: "",
+    correctionTwo: "",
+    modeOfPayment: "online",
 
+})
+setAgeLimit({
+  female: "",
+  general: "",
+  stSc: "",
+  obc: "",
+  pwdUnReserved: "",
+  pwdObc: "",
+  exServiceMen: "",
+})
+setExamBoard("");
+setExamName("");
+setDepartment("");
+setStartDate("");
+setLastDate("");
+setFormUrls({
+  applyUrl: "",
+  downloadNotification: "",
+  officialWebsite: "",
+
+})
+setQualification("");
+setExtraFields("");
+setTimeout(() => {
+  setStatus("");
+}, 4000);
+}
   const handleSubmit = async(e) => {
     e.preventDefault();
+    setLoadings(true);
 
     // Create the data object to send to the server
     const formData = {
@@ -124,21 +167,24 @@ const statedata=[
           const responseData = await response.text(); // Await the promise to get the response text
     console.log("Response data:", responseData);
     // setResponsedata(responseData);
-    document.getElementById("foamid").innerHTML=responseData;
+    setStatus("Upload data successfully");
+    resetdata();
 
    
   } else {
           console.error("Failed to make POST request:", response.statusText);
           setResponsedata(response.statusText)
-          document.getElementById("foamid").innerHTML= response.statusText;
+          setStatus(" Data upload failed");
+          resetdata();
 
         }
       } catch (error) {
         console.error("Error:", error);
-        document.getElementById("foamid").innerHTML= error;
+        setStatus(" Data upload failed");
+        resetdata();
 
       }
-  
+  setLoadings(false);
 
 
 
@@ -146,8 +192,11 @@ const statedata=[
   
 
   return (
-    <div className="form-container" id="foamid">
+    <div>
+      {loadings?(<><Spinner status={status}></Spinner></>):(<>
+        <div className="form-container" id="foamid">
       <h2>Application  Form</h2>
+      <div>{status}</div>
       <form className="foam" onSubmit={handleSubmit}>
         {/* Create input fields for each form field */}
         <label className="form-label">Exam Name:</label>
@@ -203,15 +252,6 @@ const statedata=[
         <br /><br />
 
         
-
-
-
-
-
-
-
-
-
 
 
 
@@ -431,7 +471,16 @@ const statedata=[
           <br />
         <button style={{fontSize:"25px",fontWeight:"bolder",background:"green" ,color:"white", borderRadius:"5px",cursor:"pointer",background: "rgb(2,0,36)",padding:"4px"}} type="submit">Submit</button>
       </form>
+      <div >
+        <div>
+        {status}
+
+        </div>
+      </div>
     </div>
+      </>)}
+    </div>
+   
   );
 };
 
