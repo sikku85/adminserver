@@ -1,20 +1,71 @@
 .mainfoamcontainer{
     /* background-color: red; */
-    height: 90vh;
-    width: 100vw;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: white;
+    /* height: 100vh; */
+    border: 2px solid wheat;
+    background-color: white;
+    color:black;
+    height: 60vh;
+    width: 70vw;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 6px rgba(0, 0, 0, 0.1);
 
+                
+
+
+}
+.foamcontainer{
+    height: 100vh;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,11,60,0.913624824929972) 100%, rgba(0,212,255,1) 100%);
+    display:flex;
+    justify-content: center;
+    align-items: center;
 
 }
 .inputfield{
     border: 1px solid black;
+    border-radius: 4px;
+    color: black;
+    padding: 4px;
+    width: 300px;
+    margin-bottom: 5px;
 }
 .btn{
-    background: rgb(2,0,36);
+    background: #386BC0;
     color: white;
     border-radius: 5px;
     padding: 4px;
+    width: 300px;
+}
+.signupbtn{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    /* border: 1px solid red; */
+    /* width: 300px; */
+}
+.signup{
+border: 1px solid gray;
+width: 150px;
+border-radius: 5px;
+padding: 5px;
+margin: 3px;
+background-color: lightblue;
+
+}
+.forget{
+    border: 1px solid gray;
+    width: 150px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 3px;
+    background-color: lightblue;
+
+
+
 }

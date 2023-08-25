@@ -12,6 +12,7 @@ export const UploadResult = () => {
 
     const handleSubmit = async(e) => {
       e.preventDefault();
+      setLoadings(true);
   
       // Create the data object to send to the server
       const formData = {
@@ -33,21 +34,22 @@ export const UploadResult = () => {
             body: JSON.stringify(formData),
           });
       
-          if (response.ok) {
+          if (response.status===202) {
             const responseData = await response.text(); // Await the promise to get the response text
       console.log("Response data:", responseData);
     //   document.getElementById("foamid").innerHTML=responseData;
-    setStatus("Data Uploaded Successfully");
+    setStatus(responseData);
     setDeclaredDate("");
     setResultUrl("");
     setExamName("");
     setTimeout(() => {
-        setStatus("")
+        setStatus("");
     }, 3000);
       ;        } else {
             console.error("Failed to make POST request:", response.statusText);
+            const responseData = await response.text();
             // document.getElementById("foamid").innerHTML=response.statusText;
-            setStatus("Data Upload Failed");
+            setStatus(responseData);
             setDeclaredDate("");
             setResultUrl("");
              setExamName("");
@@ -65,9 +67,11 @@ export const UploadResult = () => {
         setExamName("");
         setTimeout(() => {
             setStatus("")
-        }, 3 .000);
+        }, 3000);
 
         }
+
+        setLoadings(false);
   
   
     };

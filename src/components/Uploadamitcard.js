@@ -43,7 +43,7 @@ export const Uploadamitcard = () => {
           if (response.ok) {
             const responseData = await response.text(); // Await the promise to get the response text
       console.log("Response data:", responseData);
-      setStatus("Data Uploaded Successfully");
+      setStatus(responseData);
     setDeclaredDate("");
     setDownloadUrl("");
     setExamName("");
@@ -54,7 +54,8 @@ export const Uploadamitcard = () => {
 
              } else {
             console.error("Failed to make POST request:", response.statusText);
-            setStatus("Data Upload Failed");
+            const responseData = await response.text()
+            setStatus(responseData);
     setDeclaredDate("");
     setDownloadUrl("");
     setExamName("");
