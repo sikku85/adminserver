@@ -67,6 +67,9 @@ function LoginForm() {
   return (
     <>
     <div className="foamcontainer">
+      <div className="heading" style={{color:"white"}}>
+        Pareeksha.In
+      </div>
     <form
       onSubmit={handleOnSubmit}
       className="mainfoamcontainer"
