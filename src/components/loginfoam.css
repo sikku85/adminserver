@@ -23,6 +23,7 @@
     height: 100vh;
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,11,60,0.913624824929972) 100%, rgba(0,212,255,1) 100%);
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -68,4 +69,11 @@ background-color: lightblue;
 
 
 
+}
+.heading{
+    margin-bottom: 50px;
+    font-weight: 900;
+    font-size: xx-large;
+    font-family: 'Archivo Black', sans-serif;
+font-family: 'Tilt Prism', cursive;
 }
